@@ -206,21 +206,21 @@ export default function BeforeAfterSlider({
           transform: "translateX(-50%)",
         }}
       >
-        {/* Vertical gold line */}
+        {/* Vertical line */}
         <div
           className="absolute inset-y-0 left-1/2 w-0.5 -translate-x-1/2"
           style={{
             background:
-              "linear-gradient(180deg, transparent 0%, #c8a45c 10%, #c8a45c 90%, transparent 100%)",
-            boxShadow: "0 0 12px rgba(200, 164, 92, 0.4)",
+              "linear-gradient(180deg, transparent 0%, #D42B2B 10%, #D42B2B 90%, transparent 100%)",
+            boxShadow: "0 0 12px rgba(212, 43, 43, 0.4)",
           }}
         />
 
         {/* Circle grip */}
         <div
-          className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-gold bg-bg-primary/90 backdrop-blur-sm"
+          className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-accent bg-bg-primary/90 backdrop-blur-sm"
           style={{
-            boxShadow: "0 0 20px rgba(200, 164, 92, 0.5)",
+            boxShadow: "0 0 20px rgba(212, 43, 43, 0.5)",
           }}
         >
           {/* Arrows inside the grip */}
@@ -229,7 +229,7 @@ export default function BeforeAfterSlider({
             height="18"
             viewBox="0 0 18 18"
             fill="none"
-            className="text-gold"
+            className="text-accent"
           >
             <path
               d="M5.5 6L2.5 9L5.5 12"

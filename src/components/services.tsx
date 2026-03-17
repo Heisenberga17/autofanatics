@@ -27,22 +27,22 @@ export default function Services() {
   return (
     <section
       id={SECTION_IDS.services}
-      className="section-separator relative py-24 md:py-32 bg-bg-primary"
+      className="section-separator relative py-24 lg:py-32 bg-bg-primary"
     >
       {/* Subtle radial gradient background */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(200, 164, 92, 0.03) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212, 43, 43, 0.03) 0%, transparent 70%)",
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <FadeContent blur duration={800} threshold={0.2}>
           <div className="mb-16 text-center">
-            <h2 className="text-gold-gradient text-4xl font-heading font-bold md:text-5xl">
+            <h2 className="text-accent-gradient text-4xl font-heading font-bold md:text-5xl">
               Nuestros Servicios
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-text-secondary text-lg">
@@ -53,7 +53,7 @@ export default function Services() {
         </FadeContent>
 
         {/* Asymmetric Services Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-2">
           {SERVICES.map((service, index) => {
             const Icon = iconMap[service.icon];
             const isFeatured = service.featured;
@@ -71,14 +71,14 @@ export default function Services() {
                   className={cn(
                     "group relative h-full transition-all duration-300",
                     isFeatured
-                      ? "p-10 md:p-12"
+                      ? "p-8 lg:p-10"
                       : "p-8"
                   )}
-                  spotlightColor="rgba(200, 164, 92, 0.25)"
+                  spotlightColor="rgba(212, 43, 43, 0.25)"
                 >
                   {/* Featured badge */}
                   {isFeatured && (
-                    <span className="absolute right-6 top-6 rounded-full bg-gold/10 px-3 py-1 text-xs font-accent font-semibold uppercase tracking-wider text-gold">
+                    <span className="absolute right-6 top-6 rounded-full bg-accent/10 px-3 py-1 text-xs font-accent font-semibold uppercase tracking-wider text-accent">
                       Destacado
                     </span>
                   )}
@@ -92,7 +92,7 @@ export default function Services() {
                     {/* Icon */}
                     <div
                       className={cn(
-                        "mb-5 flex items-center justify-center rounded-2xl border border-gold/20 bg-gold/5",
+                        "mb-5 flex items-center justify-center rounded-2xl border border-accent/20 bg-accent/5",
                         isFeatured
                           ? "h-16 w-16 md:mb-0 md:h-20 md:w-20 md:shrink-0"
                           : "h-14 w-14"
@@ -101,7 +101,7 @@ export default function Services() {
                       {Icon && (
                         <Icon
                           className={cn(
-                            "text-gold transition-transform duration-300 group-hover:scale-110",
+                            "text-accent transition-transform duration-300 group-hover:scale-110",
                             isFeatured ? "h-8 w-8 md:h-10 md:w-10" : "h-7 w-7"
                           )}
                           strokeWidth={1.5}
@@ -133,7 +133,7 @@ export default function Services() {
                         href={buildWhatsAppUrl(service.whatsappMessage)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-gold transition-all duration-300 hover:gap-3 hover:text-gold-light"
+                        className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-accent transition-all duration-300 hover:gap-3 hover:text-accent-light"
                       >
                         <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
                         <span>Consultar por WhatsApp</span>

@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, MessageCircle } from "lucide-react";
+import Image from "next/image";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn, buildWhatsAppUrl } from "@/lib/utils";
 import { useScrollPosition } from "@/hooks/use-scroll-position";
@@ -44,7 +45,7 @@ export default function Navbar() {
             : "bg-transparent"
         )}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between md:h-20">
             {/* Logo */}
             <a
@@ -52,9 +53,14 @@ export default function Navbar() {
               onClick={(e) => handleNavClick(e, "#inicio")}
               className="flex-shrink-0"
             >
-              <span className="text-gold-gradient font-heading text-lg font-bold tracking-wider md:text-xl">
-                AUTO FANATICS
-              </span>
+              <Image
+                src="/images/logo.svg"
+                alt="Auto Fanatics"
+                width={160}
+                height={40}
+                className="h-8 w-auto md:h-10"
+                priority
+              />
             </a>
 
             {/* Desktop navigation links */}
@@ -77,7 +83,7 @@ export default function Navbar() {
                 href={buildWhatsAppUrl(WHATSAPP_CTA_MESSAGE)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-gold !px-5 !py-2.5 text-sm"
+                className="btn-primary !px-5 !py-2.5 text-sm"
               >
                 <MessageCircle className="h-4 w-4" />
                 <span>WhatsApp</span>
@@ -123,7 +129,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="block px-6 py-4 text-center font-heading text-2xl font-semibold text-text-primary transition-colors hover:text-gold"
+                    className="block px-6 py-4 text-center font-heading text-2xl font-semibold text-text-primary transition-colors hover:text-accent"
                   >
                     {link.label}
                   </a>
@@ -144,7 +150,7 @@ export default function Navbar() {
                   href={buildWhatsAppUrl(WHATSAPP_CTA_MESSAGE)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-gold text-base"
+                  className="btn-primary text-base"
                 >
                   <MessageCircle className="h-5 w-5" />
                   <span>Agenda tu Cita</span>

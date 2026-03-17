@@ -28,7 +28,7 @@ export default function Hero() {
       {/* Aurora background */}
       <div className="absolute inset-0">
         <Aurora
-          colorStops={["#c8a45c", "#1a1a1a", "#e8c66a"]}
+          colorStops={["#D42B2B", "#1a1a1a", "#E84444"]}
           amplitude={1.2}
           speed={0.5}
           blend={0.6}
@@ -36,20 +36,20 @@ export default function Hero() {
       </div>
 
       {/* Dark gradient overlay for text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/50" />
 
       {/* Content */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/5 px-5 py-2 backdrop-blur-sm"
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/5 px-5 py-2 backdrop-blur-sm"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-            <span className="font-accent text-sm font-medium tracking-wider text-gold">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="font-accent text-sm font-medium tracking-wider text-accent">
               Certificados IGL Coatings
             </span>
           </motion.div>
@@ -87,7 +87,7 @@ export default function Hero() {
               href={buildWhatsAppUrl(WHATSAPP_CTA_MESSAGE)}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold text-base"
+              className="btn-primary text-base"
             >
               <MessageCircle className="h-5 w-5" />
               <span>Agenda tu Cita</span>

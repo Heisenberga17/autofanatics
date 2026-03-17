@@ -44,7 +44,7 @@ const inputClasses = cn(
   "w-full rounded-lg border border-border-light bg-bg-tertiary px-4 py-3",
   "text-text-primary text-sm placeholder:text-text-muted",
   "outline-none transition-all duration-200",
-  "focus:border-gold/50 focus:ring-1 focus:ring-gold/20"
+  "focus:border-accent/50 focus:ring-1 focus:ring-accent/20"
 );
 
 const labelClasses = "block text-sm font-medium text-text-secondary mb-1.5";
@@ -118,13 +118,13 @@ export default function Contact() {
   return (
     <section
       id={SECTION_IDS.contact}
-      className="relative bg-bg-secondary py-20 md:py-28 section-separator"
+      className="relative bg-bg-secondary py-24 lg:py-32 section-separator"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section header */}
         <FadeContent blur duration={700} threshold={0.15}>
-          <div className="mb-14 text-center">
-            <h2 className="text-gold-gradient text-4xl font-heading font-bold mb-3">
+          <div className="mb-16 text-center">
+            <h2 className="text-accent-gradient text-4xl font-heading font-bold mb-3">
               Contáctanos
             </h2>
             <p className="text-text-secondary max-w-xl mx-auto">
@@ -140,7 +140,7 @@ export default function Contact() {
             <form
               onSubmit={handleSubmit}
               className={cn(
-                "rounded-2xl border border-border p-6 sm:p-8",
+                "rounded-2xl border border-border p-8",
                 "bg-bg-primary/50"
               )}
             >
@@ -247,7 +247,7 @@ export default function Contact() {
               {/* Submit */}
               <button
                 type="submit"
-                className="btn-gold mt-6 w-full justify-center text-base"
+                className="btn-primary mt-6 w-full justify-center text-base"
               >
                 <Send className="h-4 w-4" />
                 Enviar por WhatsApp
@@ -282,11 +282,11 @@ export default function Contact() {
                       className={cn(
                         "group flex items-center gap-3 rounded-xl border border-border p-4",
                         "bg-bg-primary/50 transition-all duration-200",
-                        item.href && "hover:border-gold/30 cursor-pointer"
+                        item.href && "hover:border-accent/30 cursor-pointer"
                       )}
                     >
-                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-gold/20 bg-gold/5">
-                        <Icon className="h-4 w-4 text-gold" />
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-accent/20 bg-accent/5">
+                        <Icon className="h-4 w-4 text-accent" />
                       </div>
                       <div className="min-w-0">
                         <p className="text-xs text-text-muted">{item.label}</p>
@@ -294,7 +294,7 @@ export default function Contact() {
                           className={cn(
                             "text-sm font-medium text-text-primary truncate",
                             item.href &&
-                              "group-hover:text-gold transition-colors duration-200"
+                              "group-hover:text-accent transition-colors duration-200"
                           )}
                         >
                           {item.value}
@@ -330,7 +330,7 @@ export default function Contact() {
               href={buildWhatsAppUrl("Hola! Me gustaría agendar una cita.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold inline-flex items-center justify-center text-lg px-10 py-4"
+              className="btn-primary inline-flex items-center justify-center text-lg px-10 py-4"
             >
               <MessageCircle className="h-5 w-5" />
               Agenda tu Cita por WhatsApp

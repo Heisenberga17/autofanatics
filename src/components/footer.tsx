@@ -1,6 +1,7 @@
 "use client";
 
 import { Phone, MapPin, Clock, Instagram } from "lucide-react";
+import Image from "next/image";
 import {
   NAV_LINKS,
   BUSINESS_NAME,
@@ -41,23 +42,27 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-bg-primary border-t border-border">
-      {/* Gold gradient line at top */}
+      {/* Red gradient line at top */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, #c8a45c 30%, #e8c66a 50%, #c8a45c 70%, transparent)",
+            "linear-gradient(90deg, transparent, #D42B2B 30%, #E84444 50%, #D42B2B 70%, transparent)",
         }}
       />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-14 pb-8">
         {/* 3-column grid */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
           {/* Column 1: Brand + About */}
           <div>
-            <span className="text-gold-gradient font-heading text-2xl font-bold tracking-wider">
-              AUTO FANATICS
-            </span>
+            <Image
+              src="/images/logo.svg"
+              alt="Auto Fanatics"
+              width={180}
+              height={45}
+              className="h-10 w-auto"
+            />
             <p className="mt-4 text-sm leading-relaxed text-text-secondary max-w-xs">
               Estudio de detailing profesional en Panamá. Transformamos y
               protegemos tu vehículo con técnicas avanzadas y productos de la
@@ -67,11 +72,11 @@ export default function Footer() {
             <div
               className={cn(
                 "mt-5 inline-flex items-center gap-2 rounded-full",
-                "border border-gold/20 bg-gold/5 px-4 py-2"
+                "border border-accent/20 bg-accent/5 px-4 py-2"
               )}
             >
-              <div className="h-2 w-2 rounded-full bg-gold" />
-              <span className="text-xs font-medium text-gold tracking-wide">
+              <div className="h-2 w-2 rounded-full bg-accent" />
+              <span className="text-xs font-medium text-accent tracking-wide">
                 Distribuidor Autorizado IGL Coatings
               </span>
             </div>
@@ -89,7 +94,7 @@ export default function Footer() {
                   href={link.href}
                   className={cn(
                     "text-sm text-text-secondary transition-colors duration-200",
-                    "hover:text-gold"
+                    "hover:text-accent"
                   )}
                 >
                   {link.label}
@@ -113,12 +118,12 @@ export default function Footer() {
                       item.href && "group cursor-pointer"
                     )}
                   >
-                    <Icon className="h-4 w-4 flex-shrink-0 text-gold" />
+                    <Icon className="h-4 w-4 flex-shrink-0 text-accent" />
                     <span
                       className={cn(
                         "text-sm text-text-secondary",
                         item.href &&
-                          "group-hover:text-gold transition-colors duration-200"
+                          "group-hover:text-accent transition-colors duration-200"
                       )}
                     >
                       {item.label}

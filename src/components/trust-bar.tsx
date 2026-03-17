@@ -10,10 +10,10 @@ const TRUST_ITEMS = [
 
 export default function TrustBar() {
   return (
-    <section className="bg-bg-secondary py-5">
+    <section className="bg-bg-secondary py-6">
       <FadeContent blur duration={800} threshold={0.2}>
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          {/* Desktop: horizontal with gold vertical separators */}
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          {/* Desktop: horizontal with vertical separators */}
           <div className="hidden items-center justify-center gap-6 md:flex">
             {TRUST_ITEMS.map((item, i) => (
               <div key={item} className="flex items-center gap-6">
@@ -22,7 +22,7 @@ export default function TrustBar() {
                 </span>
                 {i < TRUST_ITEMS.length - 1 && (
                   <span
-                    className="h-4 w-px bg-gold/50"
+                    className="h-4 w-px bg-accent/50"
                     aria-hidden="true"
                   />
                 )}
@@ -30,7 +30,7 @@ export default function TrustBar() {
             ))}
           </div>
 
-          {/* Mobile: stacked vertically with gold dot separators */}
+          {/* Mobile: stacked vertically with dot separators */}
           <div className="flex flex-col items-center gap-3 md:hidden">
             {TRUST_ITEMS.map((item, i) => (
               <div key={item} className="flex flex-col items-center gap-3">
@@ -39,7 +39,7 @@ export default function TrustBar() {
                 </span>
                 {i < TRUST_ITEMS.length - 1 && (
                   <span
-                    className="h-1.5 w-1.5 rounded-full bg-gold/60"
+                    className="h-1.5 w-1.5 rounded-full bg-accent/60"
                     aria-hidden="true"
                   />
                 )}

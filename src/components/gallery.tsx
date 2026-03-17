@@ -12,7 +12,7 @@ const galleryItems = [
     before:
       "linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 30%, #333333 60%, #1f1f1f 100%)",
     after:
-      "linear-gradient(135deg, #1a1a1a 0%, #2a2520 30%, rgba(200, 164, 92, 0.15) 60%, #1a1a1a 100%)",
+      "linear-gradient(135deg, #1a1a1a 0%, #2a2020 30%, rgba(212, 43, 43, 0.15) 60%, #1a1a1a 100%)",
   },
   {
     id: "gallery-2",
@@ -20,7 +20,7 @@ const galleryItems = [
     before:
       "linear-gradient(160deg, #222222 0%, #1a1a1a 40%, #2d2d2d 70%, #181818 100%)",
     after:
-      "linear-gradient(160deg, #1c1a16 0%, rgba(200, 164, 92, 0.12) 40%, #2a2520 70%, #1a1712 100%)",
+      "linear-gradient(160deg, #1c1a16 0%, rgba(212, 43, 43, 0.12) 40%, #2a2020 70%, #1a1212 100%)",
   },
   {
     id: "gallery-3",
@@ -28,7 +28,7 @@ const galleryItems = [
     before:
       "linear-gradient(200deg, #252525 0%, #1e1e1e 35%, #303030 65%, #1a1a1a 100%)",
     after:
-      "linear-gradient(200deg, #221f1a 0%, rgba(200, 164, 92, 0.1) 35%, #2c2720 65%, #1a1712 100%)",
+      "linear-gradient(200deg, #221a1a 0%, rgba(212, 43, 43, 0.1) 35%, #2c2020 65%, #1a1212 100%)",
   },
 ];
 
@@ -36,13 +36,13 @@ export default function Gallery() {
   return (
     <section
       id={SECTION_IDS.gallery}
-      className="section-separator relative py-24 md:py-32 bg-bg-secondary"
+      className="section-separator relative py-24 lg:py-32 bg-bg-secondary"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <FadeContent blur duration={800} threshold={0.2}>
           <div className="mb-16 text-center">
-            <h2 className="text-gold-gradient text-4xl font-heading font-bold md:text-5xl">
+            <h2 className="text-accent-gradient text-4xl font-heading font-bold md:text-5xl">
               Galería de Resultados
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-text-secondary text-lg">
@@ -53,7 +53,7 @@ export default function Gallery() {
         </FadeContent>
 
         {/* Before/After Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {galleryItems.map((item, index) => (
             <FadeContent
               key={item.id}
