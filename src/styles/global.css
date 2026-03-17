@@ -29,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -137,7 +138,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Section separator */
 .section-separator {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .section-separator::after {
