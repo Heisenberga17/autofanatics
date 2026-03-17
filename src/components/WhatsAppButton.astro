@@ -1,0 +1,44 @@
+---
+import { buildWhatsAppUrl } from '../lib/utils';
+const url = buildWhatsAppUrl("Hola! Me gustaría saber más sobre sus servicios.");
+---
+
+<div id="whatsapp-btn" class="fixed bottom-6 right-6 z-50 opacity-0 pointer-events-none transition-all duration-500">
+  <a href={url} target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"
+     class="relative flex items-center justify-center w-16 h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 hover:scale-110 transition-transform duration-300 pulse-ring">
+    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0">
+      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+function initWhatsApp() {
+  const btn = document.getElementById('whatsapp-btn');
+  if (!btn) return;
+
+  let visible = false;
+  const showTimer = setTimeout(() => {
+    visible = true;
+    updateVisibility();
+  }, 2000);
+
+  let footerVisible = false;
+  const footer = document.querySelector('footer');
+  if (footer) {
+    const observer = new IntersectionObserver(([entry]) => {
+      footerVisible = entry.isIntersecting;
+      updateVisibility();
+    }, { threshold: 0.1 });
+    observer.observe(footer);
+  }
+
+  function updateVisibility() {
+    const show = visible && !footerVisible;
+    btn.style.opacity = show ? '1' : '0';
+    btn.style.pointerEvents = show ? 'auto' : 'none';
+  }
+}
+initWhatsApp();
+document.addEventListener('astro:page-load', initWhatsApp);
+</script>

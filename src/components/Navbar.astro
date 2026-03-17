@@ -1,0 +1,174 @@
+---
+import { NAV_LINKS } from '../lib/constants';
+import { buildWhatsAppUrl } from '../lib/utils';
+
+const WHATSAPP_CTA_MESSAGE = "Hola! Me gustaría agendar una cita.";
+const whatsappUrl = buildWhatsAppUrl(WHATSAPP_CTA_MESSAGE);
+---
+
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+  <div id="nav-glow" class="absolute bottom-0 left-0 right-0 h-px opacity-0 transition-opacity duration-300" style="background: linear-gradient(90deg, transparent, rgba(212,43,43,0.4) 30%, rgba(232,68,68,0.6) 50%, rgba(212,43,43,0.4) 70%, transparent)"></div>
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between md:h-20">
+      <!-- Logo -->
+      <a href="#inicio" class="flex-shrink-0">
+        <img src="/images/logo.svg" alt="Auto Fanatics" class="h-8 w-auto md:h-10" />
+      </a>
+
+      <!-- Desktop nav links -->
+      <div class="hidden items-center gap-1 md:flex">
+        {NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            class="relative px-4 py-2 text-sm font-medium text-text-secondary transition-colors duration-200 hover:text-text-primary"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Desktop WhatsApp CTA -->
+      <div class="hidden items-center md:flex">
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/>
+          </svg>
+          Agendar Cita
+        </a>
+      </div>
+
+      <!-- Mobile hamburger button -->
+      <button
+        type="button"
+        id="mobile-toggle"
+        class="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg text-text-primary transition-colors hover:bg-white/5 md:hidden"
+        aria-label="Abrir menú"
+      >
+        <svg class="icon-menu h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"/>
+          <line x1="4" x2="20" y1="6" y2="6"/>
+          <line x1="4" x2="20" y1="18" y2="18"/>
+        </svg>
+        <svg class="icon-close hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile overlay menu -->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-bg-primary/95 backdrop-blur-xl md:hidden opacity-0 pointer-events-none transition-all duration-300">
+  <div class="flex h-full flex-col items-center justify-center gap-8">
+    {NAV_LINKS.map((link) => (
+      <div class="mobile-link">
+        <a
+          href={link.href}
+          class="text-2xl font-heading font-semibold text-text-primary transition-colors duration-200 hover:text-accent-red"
+        >
+          {link.label}
+        </a>
+      </div>
+    ))}
+    <div class="mobile-link">
+      <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+          <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/>
+        </svg>
+        Agendar Cita
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  #mobile-menu.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #mobile-menu .mobile-link {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  #mobile-menu.is-open .mobile-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Stagger the links */
+  #mobile-menu.is-open .mobile-link:nth-child(1) { transition-delay: 0s; }
+  #mobile-menu.is-open .mobile-link:nth-child(2) { transition-delay: 0.08s; }
+  #mobile-menu.is-open .mobile-link:nth-child(3) { transition-delay: 0.16s; }
+  #mobile-menu.is-open .mobile-link:nth-child(4) { transition-delay: 0.24s; }
+  #mobile-menu.is-open .mobile-link:nth-child(5) { transition-delay: 0.32s; }
+  #mobile-menu.is-open .mobile-link:nth-child(6) { transition-delay: 0.4s; }
+</style>
+
+<script>
+  function initNavbar() {
+    const nav = document.getElementById('main-nav');
+    const glow = document.getElementById('nav-glow');
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!nav || !glow || !toggle || !menu) return;
+
+    // Scroll detection
+    function onScroll() {
+      const scrolled = window.scrollY > 50;
+      nav.classList.toggle('glass', scrolled);
+      nav.classList.toggle('shadow-lg', scrolled);
+      nav.classList.toggle('shadow-black/20', scrolled);
+      nav.classList.toggle('bg-transparent', !scrolled);
+      glow.style.opacity = scrolled ? '1' : '0';
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Mobile menu toggle
+    let isOpen = false;
+    toggle.addEventListener('click', () => {
+      isOpen = !isOpen;
+      menu.classList.toggle('is-open', isOpen);
+      toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+      // Toggle icon visibility
+      const menuIcon = toggle.querySelector('.icon-menu');
+      const closeIcon = toggle.querySelector('.icon-close');
+      if (menuIcon) menuIcon.classList.toggle('hidden', isOpen);
+      if (closeIcon) closeIcon.classList.toggle('hidden', !isOpen);
+    });
+
+    // Close mobile menu on link click
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          isOpen = false;
+          menu.classList.remove('is-open');
+          const menuIcon = toggle.querySelector('.icon-menu');
+          const closeIcon = toggle.querySelector('.icon-close');
+          if (menuIcon) menuIcon.classList.remove('hidden');
+          if (closeIcon) closeIcon.classList.add('hidden');
+          toggle.setAttribute('aria-label', 'Abrir menú');
+          const el = document.getElementById(href.slice(1));
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Also handle desktop nav link smooth scroll
+    nav.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href) {
+          e.preventDefault();
+          const el = document.getElementById(href.slice(1));
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  }
+  initNavbar();
+  document.addEventListener('astro:page-load', initNavbar);
+</script>

@@ -1,0 +1,284 @@
+---
+import { SECTION_IDS } from '../lib/constants';
+import { buildWhatsAppUrl } from '../lib/utils';
+
+const WHATSAPP_CTA_MESSAGE = "Hola! Me gustaría agendar una cita.";
+const whatsappUrl = buildWhatsAppUrl(WHATSAPP_CTA_MESSAGE);
+
+const headlineWords = "Detailing Profesional Certificado en Panamá".split(' ');
+const subheadlineWords = "Protección cerámica, corrección de pintura y detailing premium en Costa del Este".split(' ');
+---
+
+<section id={SECTION_IDS.hero} class="relative min-h-screen w-full overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 60px), 0 100%)">
+  <!-- Aurora canvas container -->
+  <div class="absolute inset-0">
+    <div id="aurora-container" class="w-full h-full"></div>
+  </div>
+
+  <!-- Dark gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/50"></div>
+
+  <!-- Car image overlay (desktop) -->
+  <div
+    class="absolute inset-0 hidden lg:block"
+    style="mask-image: linear-gradient(to left, black 30%, transparent 70%); -webkit-mask-image: linear-gradient(to left, black 30%, transparent 70%)"
+  >
+    <img
+      src="/images/hero-car.jpg"
+      alt="Luxury car detailing"
+      class="h-full w-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-black/30"></div>
+  </div>
+
+  <!-- Car image (mobile) -->
+  <div class="absolute inset-0 lg:hidden">
+    <img
+      src="/images/hero-car.jpg"
+      alt="Luxury car detailing"
+      class="h-full w-full object-cover opacity-20"
+      loading="eager"
+    />
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 lg:items-start lg:px-8">
+    <div class="mx-auto w-full max-w-7xl">
+      <div class="max-w-4xl lg:max-w-2xl">
+        <!-- Badge -->
+        <div data-fade class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-sm">
+          <span class="h-2 w-2 rounded-full bg-accent-red"></span>
+          <span class="text-sm font-medium text-text-secondary">Distribuidor Autorizado IGL Coatings</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 data-fade data-fade-delay="200" class="font-heading text-5xl font-bold leading-tight text-text-primary md:text-7xl lg:text-left">
+          {headlineWords.map((word, i) => (
+            <span class="blur-word inline-block" style={`animation-delay: ${i * 80}ms`}>
+              {word}{i < headlineWords.length - 1 ? '\u00A0' : ''}
+            </span>
+          ))}
+        </h1>
+
+        <!-- Subheadline -->
+        <p data-fade data-fade-delay="400" class="mt-6 text-lg text-text-secondary md:text-xl lg:text-left">
+          {subheadlineWords.map((word, i) => (
+            <span class="blur-word inline-block" style={`animation-delay: ${i * 40}ms`}>
+              {word}{i < subheadlineWords.length - 1 ? '\u00A0' : ''}
+            </span>
+          ))}
+        </p>
+
+        <!-- CTAs -->
+        <div data-fade data-fade-delay="600" class="mt-10 flex flex-row items-center gap-4">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-lg bg-accent-red px-6 py-3 font-semibold text-white transition-all hover:bg-accent-red/90 hover:shadow-lg hover:shadow-accent-red/25"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>
+            Agendar Cita
+          </a>
+          <a
+            href={`#${SECTION_IDS.services}`}
+            class="inline-flex items-center gap-2 rounded-lg border border-white/20 px-6 py-3 font-semibold text-text-primary transition-all hover:border-white/40 hover:bg-white/5"
+          >
+            Ver Servicios
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div data-fade data-fade-delay="1500" class="absolute bottom-16 left-1/2 z-10 -translate-x-1/2">
+    <svg class="h-6 w-6 text-text-secondary/50 scroll-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  </div>
+</section>
+
+<style>
+  /* Blur-in word animation */
+  .blur-word {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(20px);
+    animation: blur-word-in 0.5s ease forwards;
+    animation-play-state: paused;
+  }
+
+  .is-visible .blur-word {
+    animation-play-state: running;
+  }
+
+  @keyframes blur-word-in {
+    0% {
+      opacity: 0;
+      filter: blur(10px);
+      transform: translateY(20px);
+    }
+    50% {
+      opacity: 0.5;
+      filter: blur(5px);
+      transform: translateY(-3px);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+  }
+
+  .scroll-bounce {
+    animation: bounce-down 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce-down {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+</style>
+
+<script>
+async function initAurora() {
+  const container = document.getElementById('aurora-container');
+  if (!container) return;
+
+  const { Renderer, Program, Mesh, Color, Triangle } = await import('ogl');
+
+  const VERT = `#version 300 es
+in vec2 position;
+void main() {
+  gl_Position = vec4(position, 0.0, 1.0);
+}`;
+
+  const FRAG = `#version 300 es
+precision highp float;
+
+uniform float uTime;
+uniform float uAmplitude;
+uniform vec3 uColorStops[3];
+uniform vec2 uResolution;
+uniform float uBlend;
+
+out vec4 fragColor;
+
+vec3 permute(vec3 x) {
+  return mod(((x * 34.0) + 1.0) * x, 289.0);
+}
+
+float snoise(vec2 v){
+  const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+  vec2 i  = floor(v + dot(v, C.yy));
+  vec2 x0 = v - i + dot(i, C.xx);
+  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+  vec4 x12 = x0.xyxy + C.xxzz;
+  x12.xy -= i1;
+  i = mod(i, 289.0);
+  vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+  vec3 m = max(0.5 - vec3(dot(x0, x0), dot(x12.xy, x12.xy), dot(x12.zw, x12.zw)), 0.0);
+  m = m * m;
+  m = m * m;
+  vec3 x = 2.0 * fract(p * C.www) - 1.0;
+  vec3 h = abs(x) - 0.5;
+  vec3 ox = floor(x + 0.5);
+  vec3 a0 = x - ox;
+  m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+  vec3 g;
+  g.x  = a0.x  * x0.x  + h.x  * x0.y;
+  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+  return 130.0 * dot(m, g);
+}
+
+struct ColorStop {
+  vec3 color;
+  float position;
+};
+
+#define COLOR_RAMP(colors, factor, finalColor) { \\
+  int index = 0; \\
+  for (int i = 0; i < 2; i++) { \\
+    ColorStop currentColor = colors[i]; \\
+    bool isInBetween = currentColor.position <= factor; \\
+    index = int(mix(float(index), float(i), float(isInBetween))); \\
+  } \\
+  ColorStop currentColor = colors[index]; \\
+  ColorStop nextColor = colors[index + 1]; \\
+  float range = nextColor.position - currentColor.position; \\
+  float lerpFactor = (factor - currentColor.position) / range; \\
+  finalColor = mix(currentColor.color, nextColor.color, lerpFactor); \\
+}
+
+void main() {
+  vec2 uv = gl_FragCoord.xy / uResolution;
+  ColorStop colors[3];
+  colors[0] = ColorStop(uColorStops[0], 0.0);
+  colors[1] = ColorStop(uColorStops[1], 0.5);
+  colors[2] = ColorStop(uColorStops[2], 1.0);
+  vec3 rampColor;
+  COLOR_RAMP(colors, uv.x, rampColor);
+  float height = snoise(vec2(uv.x * 2.0 + uTime * 0.1, uTime * 0.25)) * 0.5 * uAmplitude;
+  height = exp(height);
+  height = (uv.y * 2.0 - height + 0.2);
+  float intensity = 0.6 * height;
+  float midPoint = 0.20;
+  float auroraAlpha = smoothstep(midPoint - uBlend * 0.5, midPoint + uBlend * 0.5, intensity);
+  vec3 auroraColor = intensity * rampColor;
+  fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);
+}`;
+
+  const renderer = new Renderer({ alpha: true, premultipliedAlpha: true, antialias: true });
+  const gl = renderer.gl;
+  gl.clearColor(0, 0, 0, 0);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+  gl.canvas.style.backgroundColor = 'transparent';
+
+  function hexToRGB(hex) {
+    const c = new Color(hex);
+    return [c.r, c.g, c.b];
+  }
+
+  const colorStops = ['#D42B2B', '#1a1a1a', '#E84444'];
+
+  const geometry = new Triangle(gl);
+  if (geometry.attributes.uv) delete geometry.attributes.uv;
+
+  const program = new Program(gl, {
+    vertex: VERT,
+    fragment: FRAG,
+    uniforms: {
+      uTime: { value: 0 },
+      uAmplitude: { value: 1.2 },
+      uColorStops: { value: colorStops.map(hexToRGB) },
+      uResolution: { value: [container.offsetWidth, container.offsetHeight] },
+      uBlend: { value: 0.6 }
+    }
+  });
+
+  const mesh = new Mesh(gl, { geometry, program });
+  container.appendChild(gl.canvas);
+
+  function resize() {
+    const w = container.offsetWidth;
+    const h = container.offsetHeight;
+    renderer.setSize(w, h);
+    program.uniforms.uResolution.value = [w, h];
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  let animId = 0;
+  function update(t) {
+    animId = requestAnimationFrame(update);
+    program.uniforms.uTime.value = t * 0.01 * 0.5 * 0.1;
+    renderer.render({ scene: mesh });
+  }
+  animId = requestAnimationFrame(update);
+}
+
+initAurora();
+document.addEventListener('astro:page-load', initAurora);
+</script>

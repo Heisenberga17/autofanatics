@@ -16,9 +16,9 @@
   --color-border: rgba(255, 255, 255, 0.06);
   --color-border-light: rgba(255, 255, 255, 0.1);
 
-  --font-heading: var(--font-heading);
-  --font-body: var(--font-body);
-  --font-accent: var(--font-accent);
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-accent: 'Outfit', system-ui, sans-serif;
 }
 
 * {
@@ -181,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
   background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 
-/* Shine reflection animation (Why Us section) */
+/* Shine reflection animation */
 @keyframes shine {
   0%,
   100% {
@@ -213,6 +213,26 @@ h1, h2, h3, h4, h5, h6 {
   animation: pulse-ring 2s ease-out infinite;
 }
 
+/* === Fade-in animation system === */
+[data-fade] {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(4px);
+  transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
+}
+
+[data-fade].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Scroll indicator bounce */
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -223,5 +243,12 @@ h1, h2, h3, h4, h5, h6 {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  [data-fade] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
   }
 }

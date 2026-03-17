@@ -1,0 +1,71 @@
+---
+import '../styles/global.css';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  name: "Auto Fanatics Panama",
+  description:
+    "Estudio de detailing profesional certificado. Ceramic coating IGL Coatings, corrección de pintura, detailing interior y exterior.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Costa del Este",
+    addressRegion: "Ciudad de Panamá",
+    addressCountry: "PA",
+  },
+  telephone: "+507 6905-9397",
+  openingHours: "Mo-Sa 08:00-18:00",
+  image: "/og-image.jpg",
+  priceRange: "$$",
+  areaServed: {
+    "@type": "City",
+    name: "Ciudad de Panamá",
+  },
+};
+---
+
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Fanatics Panama | Detailing Profesional & Ceramic Coating en Costa del Este</title>
+    <meta
+      name="description"
+      content="Estudio de detailing profesional certificado en Costa del Este, Panamá. Ceramic coating IGL Coatings, corrección de pintura, detailing interior y exterior. Agenda tu cita por WhatsApp."
+    />
+    <meta
+      name="keywords"
+      content="detailing panama, ceramic coating panama, detailing costa del este, corrección de pintura, IGL Coatings panama, auto detailing, protección cerámica, Auto Fanatics Panama"
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Auto Fanatics Panama | Detailing Profesional & Ceramic Coating" />
+    <meta
+      property="og:description"
+      content="Estudio de detailing profesional certificado en Costa del Este, Panamá. Ceramic coating, corrección de pintura y más."
+    />
+    <meta property="og:locale" content="es_PA" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Auto Fanatics Panama" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;600&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="antialiased">
+    <slot />
+    <script src="../scripts/fade-in.ts"></script>
+  </body>
+</html>

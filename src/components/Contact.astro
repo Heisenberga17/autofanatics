@@ -1,0 +1,267 @@
+---
+import {
+  SECTION_IDS,
+  SERVICES,
+  WHATSAPP_DISPLAY,
+  WHATSAPP_NUMBER,
+  BUSINESS_ADDRESS,
+  BUSINESS_HOURS,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+} from '../lib/constants';
+import { buildWhatsAppUrl } from '../lib/utils';
+
+const VEHICLE_TYPES = ["Sedan", "SUV", "Pick Up", "Deportivo", "Otro"];
+
+const inputClasses = "w-full rounded-lg border border-border-light bg-bg-tertiary px-4 py-3 text-text-primary text-sm placeholder:text-text-muted outline-none transition-all duration-200 focus:border-accent/50 focus:ring-1 focus:ring-accent/20";
+const labelClasses = "block text-sm font-medium text-text-secondary mb-1.5";
+
+const CONTACT_INFO = [
+  {
+    label: "Telefono",
+    value: WHATSAPP_DISPLAY,
+    href: `https://wa.me/${WHATSAPP_NUMBER}`,
+    icon: "phone",
+  },
+  {
+    label: "Direccion",
+    value: BUSINESS_ADDRESS,
+    href: null,
+    icon: "map-pin",
+  },
+  {
+    label: "Horario",
+    value: BUSINESS_HOURS,
+    href: null,
+    icon: "clock",
+  },
+  {
+    label: "Instagram",
+    value: INSTAGRAM_HANDLE,
+    href: INSTAGRAM_URL,
+    icon: "instagram",
+  },
+];
+
+const whatsappCtaUrl = buildWhatsAppUrl("Hola! Me gustaria agendar una cita.");
+---
+
+<section id={SECTION_IDS.contact} class="relative bg-bg-secondary py-24 lg:py-32 section-separator">
+  <!-- Carbon fiber texture -->
+  <div class="pointer-events-none absolute inset-0 bg-[url('/images/carbon-fiber.png')] opacity-5"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="mb-16 text-center" data-fade>
+      <span class="mb-4 inline-block font-accent text-xs font-semibold uppercase tracking-[0.2em] text-accent">Contacto</span>
+      <h2 class="mb-4 font-heading text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+        <span class="text-accent-gradient">Contactanos</span>
+      </h2>
+      <p class="mx-auto max-w-2xl text-base text-text-secondary lg:text-lg">
+        Agenda tu cita o consultanos sobre nuestros servicios. Estamos listos para transformar tu vehiculo.
+      </p>
+    </div>
+
+    <!-- 2-Column Grid -->
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+      <!-- Left Column: Form -->
+      <div data-fade data-fade-delay="100">
+        <form id="contact-form" class="rounded-2xl border border-border p-8 bg-bg-primary/50">
+          <!-- 2-col grid for name & phone -->
+          <div class="mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div>
+              <label for="nombre" class={labelClasses}>Nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Tu nombre"
+                required
+                class={inputClasses}
+              />
+            </div>
+            <div>
+              <label for="telefono" class={labelClasses}>Telefono</label>
+              <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                placeholder="Tu telefono"
+                required
+                class={inputClasses}
+              />
+            </div>
+          </div>
+
+          <!-- 2-col grid for vehicle & service -->
+          <div class="mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <div>
+              <label for="vehiculo" class={labelClasses}>Tipo de Vehiculo</label>
+              <select
+                id="vehiculo"
+                name="vehiculo"
+                required
+                class={inputClasses}
+              >
+                <option value="" disabled selected>Seleccionar</option>
+                {VEHICLE_TYPES.map((type) => (
+                  <option value={type}>{type}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label for="servicio" class={labelClasses}>Servicio</label>
+              <select
+                id="servicio"
+                name="servicio"
+                required
+                class={inputClasses}
+              >
+                <option value="" disabled selected>Seleccionar</option>
+                {SERVICES.map((service) => (
+                  <option value={service.title}>{service.title}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <!-- Full-width textarea -->
+          <div class="mb-6">
+            <label for="mensaje" class={labelClasses}>Mensaje</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows={4}
+              placeholder="Cuentanos sobre tu vehiculo o lo que necesitas..."
+              class={inputClasses}
+            ></textarea>
+          </div>
+
+          <!-- Submit button -->
+          <button
+            type="submit"
+            class="btn-primary w-full justify-center"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+              <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/>
+              <path d="m21.854 2.147-10.94 10.939"/>
+            </svg>
+            Enviar Mensaje
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column: Map & Info -->
+      <div data-fade data-fade-delay="200">
+        <!-- Google Maps iframe -->
+        <div class="mb-8 overflow-hidden rounded-2xl border border-border">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.5!2d-79.4945!3d9.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDAnMDAuMCJOIDc5wrAyOSc0MC4yIlc!5e0!3m2!1ses!2spa!4v1"
+            width="100%"
+            height="280"
+            style="border:0; filter: invert(0.9) hue-rotate(180deg) brightness(0.8) contrast(1.2) saturate(0.3);"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Auto Fanatics Panama - Ubicacion"
+          ></iframe>
+        </div>
+
+        <!-- Contact Info Cards Grid -->
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {CONTACT_INFO.map((info) => {
+            const content = (
+              <div class="flex items-start gap-3 rounded-xl border border-border bg-bg-primary/50 p-4">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10">
+                  {info.icon === "phone" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-accent">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                  )}
+                  {info.icon === "map-pin" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-accent">
+                      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                  )}
+                  {info.icon === "clock" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-accent">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                  )}
+                  {info.icon === "instagram" && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-accent">
+                      <rect x="2" y="2" width="20" height="20" rx="5"/>
+                      <circle cx="12" cy="12" r="5"/>
+                      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                    </svg>
+                  )}
+                </div>
+                <div>
+                  <p class="text-xs font-medium text-text-muted">{info.label}</p>
+                  <p class="text-sm font-medium text-text-primary">{info.value}</p>
+                </div>
+              </div>
+            );
+
+            return info.href ? (
+              <a href={info.href} target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-80">
+                {content}
+              </a>
+            ) : (
+              content
+            );
+          })}
+        </div>
+      </div>
+    </div>
+
+    <!-- Full-width CTA -->
+    <div class="mt-16 text-center" data-fade data-fade-delay="300">
+      <a
+        href={whatsappCtaUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary inline-flex text-lg px-8 py-4"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+          <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/>
+        </svg>
+        Agenda tu Cita por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fd = new FormData(form as HTMLFormElement);
+    const nombre = fd.get('nombre') || '';
+    const telefono = fd.get('telefono') || '';
+    const vehiculo = fd.get('vehiculo') || '';
+    const servicio = fd.get('servicio') || '';
+    const mensaje = fd.get('mensaje') || '';
+
+    const lines = [
+      'Hola! Me gustaria agendar una cita.',
+      '',
+      `*Nombre:* ${nombre}`,
+      `*Telefono:* ${telefono}`,
+      `*Vehiculo:* ${vehiculo}`,
+      `*Servicio:* ${servicio}`,
+      mensaje ? `*Mensaje:* ${mensaje}` : '',
+    ].filter(Boolean).join('\n');
+
+    const encoded = encodeURIComponent(lines);
+    window.open(`https://wa.me/5076905939?text=${encoded}`, '_blank', 'noopener,noreferrer');
+  });
+}
+initContactForm();
+document.addEventListener('astro:page-load', initContactForm);
+</script>
