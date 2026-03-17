@@ -45,6 +45,17 @@ export default function Navbar() {
             : "bg-transparent"
         )}
       >
+        {/* Red bottom-border glow when scrolled */}
+        {scrolled && (
+          <div
+            className="absolute bottom-0 left-0 right-0 h-px"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, rgba(212,43,43,0.4) 30%, rgba(232,68,68,0.6) 50%, rgba(212,43,43,0.4) 70%, transparent)",
+            }}
+          />
+        )}
+
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between md:h-20">
             {/* Logo */}

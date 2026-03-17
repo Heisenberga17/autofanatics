@@ -42,6 +42,9 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-bg-primary border-t border-border">
+      {/* Faint checkered pattern */}
+      <div className="absolute inset-0 checkered-bg pointer-events-none" />
+
       {/* Red gradient line at top */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
@@ -51,7 +54,7 @@ export default function Footer() {
         }}
       />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-14 pb-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-14 pb-8">
         {/* 3-column grid */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
           {/* Column 1: Brand + About */}

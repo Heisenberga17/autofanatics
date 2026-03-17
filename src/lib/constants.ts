@@ -31,6 +31,7 @@ export const SERVICES = [
       "Protección cerámica profesional IGL Coatings con hasta 5 años de durabilidad. Brillo profundo y protección contra rayones, UV y contaminantes.",
     icon: "Shield" as const,
     featured: true,
+    image: "/images/ceramic-coating.jpg",
     whatsappMessage: "Hola! Me interesa el servicio de Ceramic Coating.",
   },
   {
@@ -40,6 +41,7 @@ export const SERVICES = [
       "Limpieza profunda y restauración completa del interior y exterior de tu vehículo. Dejamos tu auto como nuevo.",
     icon: "Sparkles" as const,
     featured: false,
+    image: "/images/detailing.jpg",
     whatsappMessage: "Hola! Me interesa el servicio de Detailing.",
   },
   {
@@ -49,6 +51,7 @@ export const SERVICES = [
       "Eliminamos swirls, rayones y oxidación para restaurar el acabado original de tu pintura con técnicas profesionales.",
     icon: "Paintbrush" as const,
     featured: false,
+    image: "/images/paint-correction.jpg",
     whatsappMessage: "Hola! Me interesa el servicio de Corrección de Pintura.",
   },
   {
@@ -58,6 +61,7 @@ export const SERVICES = [
       "Instalación profesional de láminas de control solar de alta calidad. Protección UV y privacidad para tu vehículo.",
     icon: "Sun" as const,
     featured: false,
+    image: "/images/window-tint.jpg",
     whatsappMessage: "Hola! Me interesa el servicio de Papel Ahumado.",
   },
   {
@@ -67,8 +71,18 @@ export const SERVICES = [
       "Reparación y pintura profesional de carrocería. Acabados perfectos con materiales de primera calidad.",
     icon: "Car" as const,
     featured: false,
+    image: "/images/body-paint.jpg",
     whatsappMessage: "Hola! Me interesa el servicio de Chapistería y Pintura.",
   },
+];
+
+export const GALLERY_IMAGES = [
+  { src: "/images/gallery-1.jpg", alt: "Sports car detailing" },
+  { src: "/images/gallery-2.jpg", alt: "BMW dark mood shot" },
+  { src: "/images/gallery-3.jpg", alt: "Water beading on paint" },
+  { src: "/images/gallery-4.jpg", alt: "Supercar dramatic shot" },
+  { src: "/images/gallery-5.jpg", alt: "Classic car cinematic" },
+  { src: "/images/gallery-6.jpg", alt: "Detail close-up work" },
 ];
 
 export const PROCESS_STEPS = [

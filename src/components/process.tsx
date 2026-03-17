@@ -24,9 +24,20 @@ export default function Process() {
   return (
     <section
       id={SECTION_IDS.process}
-      className="section-separator relative py-24 lg:py-32 bg-bg-secondary"
+      className="section-separator relative py-24 lg:py-32 bg-bg-secondary carbon-fiber-bg"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      {/* Faint atmosphere background image */}
+      <div className="absolute inset-0 opacity-[0.04]">
+        <img
+          src="/images/detailer-at-work.jpg"
+          alt=""
+          className="h-full w-full object-cover"
+          aria-hidden="true"
+        />
+      </div>
+      <div className="absolute inset-0 bg-bg-secondary/95" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <FadeContent blur duration={800} threshold={0.2}>
           <div className="mb-16 text-center">
@@ -129,16 +140,6 @@ export default function Process() {
                         />
                       )}
                     </div>
-
-                    {/* Dot connector on the line (except last) */}
-                    {!isLast && (
-                      <div
-                        className="absolute -left-[calc(2.5rem+1.5px)] bottom-0 h-px w-12"
-                        style={{
-                          background: "transparent",
-                        }}
-                      />
-                    )}
 
                     {/* Content */}
                     <div className="pt-1">

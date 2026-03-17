@@ -120,11 +120,14 @@ export default function Contact() {
       id={SECTION_IDS.contact}
       className="relative bg-bg-secondary py-24 lg:py-32 section-separator"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      {/* Subtle texture */}
+      <div className="absolute inset-0 carbon-fiber-bg pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section header */}
         <FadeContent blur duration={700} threshold={0.15}>
           <div className="mb-16 text-center">
-            <h2 className="text-accent-gradient text-4xl font-heading font-bold mb-3">
+            <h2 className="text-accent-gradient text-4xl font-heading font-bold mb-4">
               Contáctanos
             </h2>
             <p className="text-text-secondary max-w-xl mx-auto">

@@ -1,7 +1,6 @@
 "use client";
 
 import { Award, BadgeCheck, Gem, MapPin } from "lucide-react";
-import Image from "next/image";
 import { SECTION_IDS, WHY_US_FEATURES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import FadeContent from "@/components/FadeContent";
@@ -22,58 +21,32 @@ export default function WhyUs() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left: Decorative gradient box with animated shine */}
+          {/* Left: Real photo replacing gradient box */}
           <FadeContent blur duration={800} threshold={0.15}>
             <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-              <div
-                className={cn(
-                  "relative aspect-[4/3] overflow-hidden rounded-2xl",
-                  "bg-gradient-to-br from-accent/20 via-accent-dark/10 to-bg-tertiary",
-                  "border border-accent/10"
-                )}
-              >
-                {/* Inner layered gradient */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-bg-primary/60 via-transparent to-accent/5" />
-
-                {/* Diamond pattern overlay */}
-                <div
-                  className="absolute inset-0 opacity-[0.04]"
-                  style={{
-                    backgroundImage:
-                      "repeating-linear-gradient(45deg, #D42B2B 0, #D42B2B 1px, transparent 0, transparent 50%)",
-                    backgroundSize: "24px 24px",
-                  }}
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                {/* Real photo */}
+                <img
+                  src="/images/detailer-at-work.jpg"
+                  alt="Profesional de detailing trabajando"
+                  className="h-full w-full object-cover"
                 />
 
-                {/* Animated shine/reflection effect */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(105deg, transparent 40%, rgba(212,43,43,0.12) 45%, rgba(232,68,68,0.18) 50%, rgba(212,43,43,0.12) 55%, transparent 60%)",
-                    animation: "shine 4s ease-in-out infinite",
-                  }}
-                />
+                {/* Red-tinted gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-accent/5 to-transparent" />
 
-                {/* Center emblem — logo image */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <Image
-                    src="/images/logo.svg"
-                    alt="Auto Fanatics"
-                    width={200}
-                    height={120}
-                    className="h-24 w-auto mb-2"
-                  />
-                  <span className="mt-1 text-xs tracking-[0.2em] text-text-muted uppercase">
+                {/* Corner accents over the image */}
+                <div className="absolute top-4 left-4 h-8 w-8 border-t border-l border-accent/40 rounded-tl-md" />
+                <div className="absolute top-4 right-4 h-8 w-8 border-t border-r border-accent/40 rounded-tr-md" />
+                <div className="absolute bottom-4 left-4 h-8 w-8 border-b border-l border-accent/40 rounded-bl-md" />
+                <div className="absolute bottom-4 right-4 h-8 w-8 border-b border-r border-accent/40 rounded-br-md" />
+
+                {/* Bottom text overlay */}
+                <div className="absolute bottom-0 inset-x-0 p-6">
+                  <span className="font-accent text-xs uppercase tracking-[0.2em] text-text-secondary">
                     Premium Detailing Studio
                   </span>
                 </div>
-
-                {/* Corner accents */}
-                <div className="absolute top-4 left-4 h-8 w-8 border-t border-l border-accent/20 rounded-tl-md" />
-                <div className="absolute top-4 right-4 h-8 w-8 border-t border-r border-accent/20 rounded-tr-md" />
-                <div className="absolute bottom-4 left-4 h-8 w-8 border-b border-l border-accent/20 rounded-bl-md" />
-                <div className="absolute bottom-4 right-4 h-8 w-8 border-b border-r border-accent/20 rounded-br-md" />
               </div>
             </div>
           </FadeContent>
@@ -133,7 +106,6 @@ export default function WhyUs() {
           </div>
         </div>
       </div>
-
     </section>
   );
 }

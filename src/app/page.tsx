@@ -8,6 +8,7 @@ import WhyUs from "@/components/why-us";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import WhatsAppButton from "@/components/whatsapp-button";
+import SectionDivider from "@/components/section-divider";
 
 export default function Home() {
   return (
@@ -15,11 +16,15 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <SectionDivider direction="right" fillColor="#111111" />
         <TrustBar />
         <Services />
+        <SectionDivider direction="left" fillColor="#111111" />
         <Gallery />
+        <SectionDivider direction="right" fillColor="#111111" />
         <Process />
         <WhyUs />
+        <SectionDivider direction="left" fillColor="#111111" />
         <Contact />
       </main>
       <Footer />
